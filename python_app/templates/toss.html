@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}三钱起卦法 · 抛掷{% endblock %}
+{% block content %}
+<section class="card" id="toss-app" data-question="{{ question }}">
+  <h1>抛掷硬币起卦</h1>
+  <p class="muted">问题：{{ question if question else "无事所求" }}</p>
+
+  <div class="toss-panel">
+    <p id="progress">第 1 次抛掷</p>
+    <button id="toss-btn" type="button">抛掷三枚硬币</button>
+    <p id="status" class="muted"></p>
+  </div>
+
+  <div>
+    <h2>当前爻象（自下而上）</h2>
+    <ul id="lines" class="line-list"></ul>
+  </div>
+
+  <div class="actions">
+    <a class="link" href="/">返回首页</a>
+    <a class="link" href="/history">历史记录</a>
+  </div>
+</section>
+<script src="/static/toss.js"></script>
+{% endblock %}

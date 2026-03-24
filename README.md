@@ -63,5 +63,10 @@ ThreeCoins/
 - 构建：`npm run build`
 - 将 `dist/` 目录部署至任意静态网站服务（如 Nginx、Netlify、GitHub Pages）
 
+## Python 重构版
+- 已新增 `python_app/`：基于 FastAPI + Jinja2 的 Python 实现
+- 运行方式见：`python_app/README.md`
+- 卦象数据由脚本自动导出：`scripts/export_hexagrams.mjs`
+
 ## 许可
 - 本项目仅作为传统文化学习与娱乐用途，严禁用于迷信与不当商业宣传。

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}三钱起卦法 · 首页{% endblock %}
+{% block content %}
+<section class="card center">
+  <div class="logo">易</div>
+  <h1>三钱起卦法（Python 重构版）</h1>
+  <p class="muted">无事不占，不动不占，一事一占</p>
+
+  <form action="/toss" method="get" class="stack">
+    <label for="question">心中所求（可选）</label>
+    <input id="question" name="question" type="text" placeholder="如：今天出行是否顺利？" />
+    <button type="submit">开始起卦</button>
+  </form>
+
+  <a class="link" href="/history">查看历史记录</a>
+</section>
+{% endblock %}

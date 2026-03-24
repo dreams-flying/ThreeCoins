@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}三钱起卦法 · 结果{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>{{ reading.question if reading.question else "所测之事" }}</h1>
+  <p class="muted">起卦时间：{{ formatted_time }}</p>
+
+  <div class="hex-wrap">
+    <div class="hex-col">
+      <h2>本卦</h2>
+      <p class="hex-name">{{ reading.originalHexagram.name }}</p>
+      <p class="muted">{{ reading.originalHexagram.description }}</p>
+      {% for line in line_views %}
+      <div class="hex-line">
+        <span class="pos">{{ line.position_label }}</span>
+        <span class="symbol">{{ line.original_symbol }}</span>
+        {% if line.is_moving %}<span class="moving">{{ line.moving_mark }}</span>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="hex-col">
+      <h2>变卦</h2>
+      <p class="hex-name">{{ reading.changedHexagram.name }}</p>
+      <p class="muted">{{ reading.changedHexagram.description }}</p>
+      {% for line in line_views %}
+      <div class="hex-line">
+        <span class="pos">{{ line.position_label }}</span>
+        <span class="symbol">{{ line.changed_symbol }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <section class="stack">
+    <h2>运势总评</h2>
+    <p>{{ reading.originalHexagram.overview }}</p>
+
+    <h2>事业 / 职场</h2>
+    <p>{{ reading.originalHexagram.career }}</p>
+
+    <h2>情感 / 婚姻</h2>
+    <p>{{ reading.originalHexagram.love }}</p>
+
+    <h2>曾老指引</h2>
+    <p>{{ reading.originalHexagram.strategy }}</p>
+  </section>
+
+  {% if moving_views %}
+  <section class="stack">
+    <h2>动爻变机</h2>
+    {% for mv in moving_views %}
+    <article class="sub-card">
+      <p><strong>{{ mv.name }}</strong> · {{ mv.state }}</p>
+      <p>{{ mv.position_desc }}</p>
+      <p>{{ mv.advice }}</p>
+      <p>{{ mv.trend }}</p>
+    </article>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <div class="actions">
+    <a class="link" href="/">重新起卦</a>
+    <a class="link" href="/history">历史记录</a>
+  </div>
+</section>
+{% endblock %}
